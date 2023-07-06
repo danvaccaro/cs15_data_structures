@@ -1,0 +1,27 @@
+Lab 06: Tree Traversal
+Edited by Dan Vaccaro
+3/3/2023
+
+Acknowledgements: Thanks to the original authors for the starter code on main
+                  and the BSTRee class.
+
+Purpose: This program constructs a binary tree of sorted integers and prints
+         them out according to 3 traversal techniques: 
+         - in order (left->root->right) 
+         - pre-order (root->left->right) 
+         -level-order (root->children->descendants)
+
+         It also performs a post-order delete (left->right->root).
+
+Data structures: This program utilizes a Binary Search Tree to store the data.
+                 A BST is a sor
+                 ted tree of Nodes, where each Node has at most
+                 two children. The sort algorithms utilize recursion for in
+                 orde.
+                 Pre-order utilizes a stack to store and process the root node 
+                 for each sub-tree of Nodes in a loop.
+                 Level-order utilizes a queue to store and process the child
+                 Nodes at each depth level, and loops through the queue until
+                 all Nodes have been processed.
+
+Time taken: This took an hour to write.

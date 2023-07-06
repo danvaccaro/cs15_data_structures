@@ -1,0 +1,68 @@
+CalcYouLater
+*******************************
+*       TITLE AND NAME       *
+*******************************
+CalcYouLater
+
+Written by: Dan Vaccaro
+
+**********************
+*      PURPOSE       *
+**********************
+This program provides access to a Reverse Polish Notation (RPN) calculator. 
+Rather than traditional infix notation, where operators are placed between elements, RPN operators act on the two values directly before the operator
+(i.e. infix: 1 + 2, RPN: 1 2 +). While this is less intuitive for a human,
+this format is perfectly suited for the stack structure. 
+
+Using this program, the user can feed commands into the calculator and have 
+the operations be performed according to the RPN format. The calculator
+supports traditional arithmetic and boolean operations, and offers support for
+swap, remove, invert, duplicate, clear, and print functions. 
+
+***************************
+*      ACKNOWLEDGEMENTS   *
+***************************
+Thank you Weiwei for the excellent advice on implementing a vector for the DatumStack.
+
+***************************
+*     FILES INCLUDED      *
+***************************
+Datum.cpp / Datum.h: contain the Datum class. Each value fed to the calcutor 
+                     is stored as a Datum.
+
+DatumStack.cpp / DatumStack.h: contain the DatumStack class. This is the 
+                               primary data structure in which the calculator 
+                               stores value inputs.
+
+RPNCalc.cpp / RPNCalc.h : contain the RPNCalc class. This is the calculator 
+                          itself, which contains the stack as well as 
+                          functions to process operations on the stack.
+main.cpp : The main program in which the calculator runs.
+Makefile : The makefile for compiling CalcYouLater.
+
+***************************
+* HOW TO INSTALL AND RUN  *
+***************************
+To install, enter the following on the command line, from within the source 
+folder:
+    make CalcYouLater
+
+To run the program, enter:
+    ./CalcYouLater
+
+***************************
+* DATA STRUCTURES USED    *
+***************************
+This program relies heavily on the stack data structure. A stack is a form of
+a list in which read and write access are restricted to the "top" of the stack
+(or the "end" of the list). This is useful in particular for RPN processing, 
+since an operation is only ever executed on the elements at the end of the list.
+The structure underlying the stack is the std::vector, which is a form of an array list. Each element in the vector is a Datum - that is, an int or a bool.
+
+****************
+*    TESTING   *
+****************
+The general testing strategy was to run functions on an empty stack as well as 
+on Datums of either type int or bool. When errors appeared, they were caught
+as exceptions. Then, once errors with bad inputs were handled, it was trivial 
+to check if good inputs provided correct solutions.

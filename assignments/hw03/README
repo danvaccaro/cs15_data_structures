@@ -1,0 +1,56 @@
+Title: Homework 3 - Binary Search Trees
+By Dan Vaccaro
+
+Purpose: This program provides a binary search tree implementation and
+         performs various insertion, removal, and search tasks.
+
+Acknowledgements: Thanks to the authors of the starter code as well as
+                  StackExchange for some troubleshooting help with 
+                  recursion structure.
+            
+Time spent: I spent about 20 hours on this assignment.
+
+Files provided: 
+    BinarySearchTree.cpp - Contains definintions of BinarySearchTree class.
+    BinarySearchTree.h - contains interface for BinarySearchTree class.
+    hw3.cpp - Contains the tests run on the class.
+    Makefile - contains instructions to compile the program.
+
+How to compile and run:
+    To compile, execute "make hw3"
+    To run, execute "./hw3"
+
+Testing:
+    Many tests were derived from the provided hw3.cpp, which runs various insertions
+    removals, prints and searches on a BinarySearchTree. The general process was,
+    of course, to write one function at a time, testing on an empty tree, a single
+    element tree, a tree with a node with only one child, and a tree with two children.
+
+Answers to questions:
+1. Since the node value will be replaced with the lowest value in the right subtree,
+   find_min() will be called.
+
+2. If called on a empty tree, find_min will return a value that points to nullptr.
+
+3. Since there is no min value in an empty tree, it should return an error.
+
+4. find_min:
+    if tree is empty
+        return error
+    if the node doesnt have a left child
+        return the node value
+    else return the minimum of the left child tree
+
+5. find_max:
+    if tree is empty
+        return error
+    if the node doesnt have a right child
+        return the node value
+    else return the minimum of the right child tree
+
+6. post_order_delete
+    if the tree is empty, do nothing
+    else
+        delete the left subtree
+        delete the right subtree
+        delete the node

@@ -1,0 +1,137 @@
+Project 2: Six Degrees of Separation 
+Written by: Dan Vaccaro 
+Updated 25 April 2023 
+Time taken: 60 hours
+*************************************************************************
+Purpose: 
+*************************************************************************
+Six Degrees of Separation is a program which reads in a list of artists
+and their discographies and creates a graph of artists connected by
+collaborative songs. Vertices are represented as structs in an unordered map,
+which each vertex having an associated vector of Edges. Each Edge struct
+contains a neighboring artist and the collaborative song.
+
+This implementation successfully reads in data from a file and creates the
+appropriate set of vertices and edge sets. Additionally, get_vertex_neighbors is
+implemented to retrieve a list of collaborative artists for a given artist in
+the graph.
+
+Once the graph is populated, commands are received either by command line
+or by a file, depending on the number of arguments entered before runtime.
+Similarly, output can be sent to command line or to a file depending on the 
+number of arguments.
+
+Commands supported include breadth-first traversal, depth-first traversal,
+and exclusive breadth first traversal. 
+
+*************************************************************************
+Acknowledgements: 
+*************************************************************************
+My thanks to Weiwei for helping with advice regarding the
+populate_graph insert_edge implementation, and assistance with
+troubleshooting the commands loop.
+
+*************************************************************************
+Files included: 
+*************************************************************************
+Artist.cpp/.h - Contains definitions for the Artist object,
+                which makes up each vertex in the graph. 
+CollabGraph.cpp/.h - Contains definitions for the CollabGraph object, the
+                     primary data structure for the program. 
+SixDegrees.cpp/.h - Contains functions for client interactions with
+                    CollabGraph such as queries and graph population. 
+main.cpp - Main driver file. Handles client i/o and command line arguments. 
+Makefile - Used for program compilation. 
+/testfiles/ - this folder contains various input files used to test
+            functionality. 
+SixDegrees_unit_tests.cpp - contains unit tests on the different
+                            input files. 
+CollabGraph_unit_tests - contains basic tests for CollabGraph
+                         class.
+
+*************************************************************************
+How to compile and run: 
+****************************************************************************
+Enter "make SixDegrees" in the command line from within
+the program folder to compile. 
+Enter "./SixDegrees <artists_file> <commands_file> <output_file>" to run. 
+
+<artists_file> is required. The program will terminate if not given. 
+<commands_file> is optional. If used, the file will be read to feed command
+input to the program 
+<output_file> will log output to the filename. Also optional. 
+By default, I/O operates via std::cin and std::cout. 
+
+Supported commands include breadth-first search (bfs), depth-first
+search (dfs), exclusive search (not), and quit (quit). For bfs and dfs,
+inputting two artists in the graph will print a path between them, if it exists.
+For not, the first two artists entered will be the source and destination. Any
+artists after those will be added to an "excluded" list to prevent from being
+included in the path. The artist input will terminate when * is entered.
+
+**************************************************************************
+Data structures used: 
+**************************************************************************
+This program utilized a variety of data structures. The
+primary structure is a graph, made of Artist vertices each with an
+associated edge set (adjacency list). Vertices are connected by the edges,
+which are labeled as collaborative songs between artists. Thus, each vertex
+is a struct containing an artist and a vector of connected artist-song
+pairs. Traversal and path reporting utilized queues, stacks, and vectors.
+    
+The breadth-first search (BFS) traversal utilizes a queue to store unvisited
+vertices such that all immediate neighbors are explored first before
+exploring any further. This technique is most useful when trying to find the
+shortest path between any two artists. Because of this, however, it is less
+effective at locating other paths. 
+Depth-first search (DFS) doesn't utilize a secondary data structure. Instead, 
+it recursively visits each node such that one "branch" of the neighbors set
+is explored fully before exploring the next immediate neighbor. 
+This style of traversal is more effective at exploring all possible paths, 
+enabling one to target more specific routes.
+    
+Exclusive search follows a breadth first approach, but specifically checks
+that a given neighbor isn't on the excluded list before setting its
+predecessor.
+    
+Path reporting occurs after full traversal. Traversal is performed to mark
+each node's predecessor in the path. Then, the algorithm starts at the last
+artist in the path and continuously pushes the predecessor onto a stack
+until the source is reached. If a path was not found, then the destination
+node will have no predecessor, so an empty stack will be returned.
+    
+Once the stack is complete, reporting occurs by popping each artist off one
+at a time and outputting the associated edge with the next artist. 
+
+****************************************************************************
+Testing: 
+****************************************************************************
+Testing was performed using several different generic artist lists
+for bfs, dfs, and not. The sets tested were: empty set, single element, two
+connected elements, two disconnected elements, a mostly well connected
+5-element graph, and a disconnected 5-element graph. All tests met the spec.
+
+*************************************************************************
+Questions: 
+*************************************************************************
+1.  BFS explores a given node's closest neighbors first, before
+    expanding the frontier. This technique is useful for locating the shortest
+    path, but isn't able to target all paths as DFS can, which explores as
+    "deep" down from a neighbor as can be done before returning to the original
+    node and exploring the rest of its neighbors. While this isn't great for
+    finding the shortest path, it allows one to look through all possible
+    routes.
+
+2.  My not algorithm utilized a modified BFS. When visiting a node, it only
+    had its predecessor set if it hadn't been visited and if it wasn't on the
+    list of excluded artists. Since we were looking for the shortest path, it
+    made sense to use BFS. An inclusive search would require looking at more
+    possible paths, so a DFS approach would be more effective. I did not get to
+    finish the incl algorithm, however.
+
+3.  For both BFS and DFS, clearing metadata is O(|V||). Then, in the worst
+    case, all edges must be visited - O(|E|). Thus, the complexity for both is
+    O(|V| + |E|). For not, the only difference is looping through the excluded
+    artists array, which cannot be greater than |V|. Thus, not is also O(|E| +
+    |V|).
+

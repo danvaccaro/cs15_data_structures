@@ -1,0 +1,20 @@
+#!/bin/bash
+###
+### Usage:  ntimes X N
+###
+### Prints X N times, once per line
+### N must be non-negative
+###
+### Mark A. Sheldon, Tufts University, Spring 2020
+###
+
+if [ "$#" -ne "2" ]
+then
+        echo "Usage:  ntimes X N" 1>&2
+fi
+
+X="$1"
+N="$2"
+
+## Why re-invent the wheel?
+yes "$X" | head -n "$N"

@@ -1,0 +1,137 @@
+*******************************
+*       TITLE AND NAME       *
+*******************************
+HW01: ArrayLists
+
+Written by: Dan Vaccaro
+
+**********************
+*      PURPOSE       *
+**********************
+    This program generates a variety of CharArrayLists and performs various 
+    insertions, removals, and replacements on the lists. It calculates the time 
+    taken for each action and reports back to the user.
+
+***************************
+*      ACKNOWLEDGEMENTS   *
+***************************
+    Thank you to the professors and TAs for their instruction and guidance.
+    Thank you to duckduckgo/stackexchange for some valuable information during 
+    troubleshooting.
+
+****************************
+*  HOW TO COMPILE AND RUN  *
+****************************
+Compile using the following command in the terminal: 
+g++ -Wall -Wextra -g -o timer_main CharArrayList.cpp timer_main.cpp
+
+Run using the following command in the terminal (in installation folder)
+./timer_main
+
+
+Compile debug tests using the following command in the terminal:
+g++ -Wall -Wextra -g -o unit_tests CharArrayList.cpp unit_tests.cpp
+
+Run debug tests using the following command in the terminal (in installation folder)
+./unit_tests
+
+****************************
+*  DATA STRUCTURES USED    *
+****************************
+A CharArrayList consists of a pointer to a dynamically allocated char array 
+named data, an integer num_items representing the number of chars in the array, 
+and an integer capacity representing total number of slots in the array.
+
+When initialized, the capacity is set to 0 and data is set to a nullptr.
+Whenever the first character is inserted, capacity is set to 1 and an array 
+of that capacity is allocated on the heap. Then, index 0 is set to the character
+and num_items is set to 1.
+
+From there, whenever another character is inserted, the CharArrayList checks
+whether it needs to increase its capacity, based on the number of items 
+currently in the array. If it does need to expand, it increases capacity by 
+a factor of 2x + 2, allocates a new array with the new capacity, initializes
+values to -1, and then copies values from the old array to the new array.
+
+If the list doesn't need to expand its capacity, then the character is simply 
+copied into the current array at index num_items and num_items is increased 
+by one.
+
+In this way, insertion at the back of the array is less memory intensive than
+insertion at the front or middle of the array. Those operations require copying
+of all the values following the index of insertion into their new positions.
+
+Removal of elements from the array follows a similar pattern - removal from the 
+end is easy because it does not require other values to shift, but otherwise 
+every element after the index must be copied.
+
+Replacement and retrieval of elements is less intensive than either, since no
+shifting needs to be done. This is one of the benefits of using array lists; 
+being able to index immediately to the location in memory without needing to 
+pass every element makes replacing and retrieving elements a very easy 
+operation.
+
+As a generalization, the array list is very useful for replacing and retrieving 
+elements, but insertion and removal of elements is less efficient.
+
+****************************
+*    TESTING PROCEDURES    *
+****************************
+A unit_tests.h file was created providing various tests for each operation. In 
+general, each function was tested using empty lists, single element lists, and 
+multi-element lists, as well as running the functions in loops. The various 
+functions are detailed in unit_tests.h.
+
+****************************
+*        TIME SPENT        *
+****************************
+I spent 30 hours writing and testing this program.
+
+****************************************
+*        RANKING OPERATION SPEED       *
+****************************************
+The following is the output for the speed of each function::
+
+----------------------------------------------------------------------
+INSERTION OPERATION                                 Time (nanoseconds)
+----------------------------------------------------------------------
+pushAtFront 100 times                               23796784          
+----------------------------------------------------------------------
+pushAtBack 100 times                                24053882          
+----------------------------------------------------------------------
+insertAt middle of list 100 times                   23528635          
+----------------------------------------------------------------------
+REMOVAL OPERATION                                   Time (nanoseconds)
+----------------------------------------------------------------------
+popFromFront 100 times                              14441434          
+----------------------------------------------------------------------
+popFromBack 100 times                               14451974          
+----------------------------------------------------------------------
+removeAt middle of list 100 times                   14409383          
+----------------------------------------------------------------------
+ACCESS OPERATION                                    Time (nanoseconds)
+----------------------------------------------------------------------
+call first() 100 times                              941               
+----------------------------------------------------------------------
+call last() 100 times                               952               
+----------------------------------------------------------------------
+call elementAt() for middle of list 100 times       671               
+----------------------------------------------------------------------
+
+Insertion was the slowest operation. Surprisingly, the slowest insert 
+operation was pushAtBack as typically one would expect the other two 
+operations to be slower due to more copying. However, in the case of my 
+program, every insertion is followed by a shrink(), which creates a new array
+and requires every element to be copied regardless of the position. Because 
+of that, each operation takes about the same amount of time to complete.
+
+Removal was faster than insertion. Again, since shrink() is run for every 
+remove in order to minimize the footprint, the time is about equivalent for
+each removal operation. If there weren't shrinking, one would expect that
+similar to insert, removal is faster at the back than at other indices.
+
+At first, it seems strange that depending on the index, access operations
+took longer at the start and finish than at the middle. Typically, one would 
+expect them to be equal. However, the first() and last() functions run an
+additional error check before calling the insert function, so this explains 
+the difference.

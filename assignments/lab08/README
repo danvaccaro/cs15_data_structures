@@ -1,0 +1,20 @@
+Lab 08 - Heaps
+Dan Vaccaro
+3/16/2023
+
+This is an implementation of a heap which reads a list of strings
+and sorts them into a min-heap based on alphabetical order. The heap
+is then printed to the console.
+
+A heap is a type of binary tree that is stored in an array and 
+traversed in level-order across the array. In this way, each node's
+children and parents can be identified based on its index - the left
+child will always be at position 2 * index, the right child will always
+be at position (2 * index) + 1, and the parent (excepting the root) will
+always be at position index / 2. 
+
+The two intransients for a min-heap are:
+    1. The parent key is always less than its children.
+    2. The heap is a complete binary tree that is filled from the left.
+
+A well-behaved heap will perform removals and insertions in O(log n) time.

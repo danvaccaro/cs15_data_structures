@@ -1,0 +1,66 @@
+/*
+ * Comp 15 Lab 2: Planets
+ *
+ * README
+ *
+ * Name: Dan Vaccaro
+ * Date: 2/2/2023
+ * 
+ *
+ */
+
+PROGRAM PURPOSE:
+---------------
+    This lab assignment offers Comp 15 students with hands on practice
+    with linked lists. Specifically, this program implements a singly 
+    linked list of Planet objects.
+
+ACKNOWLEDGEMENTS:
+----------------
+    I discussed some initial ideas with the professor and other students in my lab.
+
+FILES:
+-----
+
+   planet-driver.cpp: Main driver for the linked list of planets.
+        Reads in planets from cin, before adding them to two lists.
+
+    LinkedList.cpp: Implementation of the LinkedList class which includes
+        key functions regarding the linked list, such as the default and
+        parametrized constructor, assignment operator, print function, pushAtFront, pushAtBack, and the destructor.
+        other helper functions.
+
+    LinkedList.h: Interface of LinkedList class, which includes key information
+        regarding the LinkedList class.
+
+    Planet.cpp: Implementation of Planet class which includes a default and
+        parametrized constructor which creates Planet objects, a print
+        function, and assignment operator.
+
+    Planet.h: Interface of Planet class, which includes key information
+        regarding Planet objects.
+
+
+HOW TO COMPILE/LINK/RUN:
+-----------------------
+    * Compile with "make planet-driver"
+    * Run with "./planet-driver"
+
+
+DATA STRUCTURES:
+---------------
+
+    The main data structure of this lab is a singly linked list. Inserting
+    at the front of a linked list is O(1). Inserting at the back is
+    O(list_length) (or O(1) if there is a back pointer). Access is O(n),
+    because the worst case run time is if the element that is being looked
+    for is the last element in the list.  A linked list is useful because it
+    can be used dynamically and it is relatively easy to insert and delete
+    nodes. A disadvantage of linked lists is that it is difficult to access
+    elements quickly, as you cannot directly access elements like with an array
+    and must traverse the list to access elements.
+
+TESTING:
+-------
+All testing was performed using the provided planet-driver file, since all fucntions can be tested using that file.
+

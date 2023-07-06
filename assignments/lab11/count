@@ -1,0 +1,44 @@
+#!/bin/bash
+###
+### Usage:  count JustTo
+###         count From To
+###
+### Count from 0 up to, but not including, JustTo
+### or
+### Count from From to, but not including, To
+###
+### You can count forwards or backwords
+###      "count 10 3" will produce 10 9 8 7 6 5 4
+### Will get bash message if arguments are not numeric
+###
+### Mark A. Sheldon, Tufts University, Spring 2020
+###
+
+if [ $# -eq 1 ]
+then
+    From=0
+    To=$1
+    By=1
+
+elif [ $# -eq 2 ]
+then
+    From=$1
+    To=$2
+    if [ $From -gt $To ]
+    then
+        By=-1
+    else
+        By=1
+    fi
+else
+    printf "Usage:  count JustTo\n        count From To\n" 1>&2
+    exit 1
+fi
+
+# echo Counting from $From to $To by $By 1>&2
+
+while [ $From -ne $To ]
+do
+    printf "%d\n" $From
+    From=$(expr $From + $By)
+done

@@ -1,0 +1,10 @@
+9
+socks 10
+scarves 43
+mittens 9
+hats 27
+pins 51
+notebooks 3
+bags 72
+shirts 15
+jackets 36

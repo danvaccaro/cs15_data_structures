@@ -1,0 +1,58 @@
+Binary Tree Traversals
+======================
+
+Traversal:  Look at each node in data structure
+            We say we "visit" each node
+
+Can classify traversals according to order in which they visit nodes.
+
+Three naturally recursive traversals (called "depth-first" traversals).
+Differ in when they visit a node relative to its subtrees:
+Remember that sometimes you will return a value that combines the
+value in a node and the values in its subtrees!
+
+- preorder:  node data first
+  visit (process) node data
+  traverse left  subtree
+  traverse right subtree
+
+- inorder:  node data in between subtrees
+  traverse left  subtree
+  visit (process) node data
+  traverse right subtree
+
+- postorder:  node data after subtrees
+  traverse left  subtree
+  traverse right subtree
+  visit (process) node data
+
+-----------------
+
+Breadth first:  does not have a simple recursive forumlation.
+Typically done with an auxiliary data structure, a queue:
+
+- level order:  Visit nodes in order of depth, i. e., visit root, then
+  all root's children, then all the children's children, and so on.
+
+
+----------------------------------------------------------
+
+Examples:
+
+Consider this binary tree (not a BST):
+
+                        A
+                     /     \
+                   B         C
+                 /   \     /  \ 
+                D     E   F     G
+                     /           \
+                    H             I
+
+Write the names of the nodes in visitation order for each type of
+traversal.
+
+Preorder:     ABDEHCFGI
+Inorder:      DBHEAFCGI
+Postorder:    DHEBFIGCA
+Level order:  ABCDEFGHI

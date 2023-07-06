@@ -1,0 +1,28 @@
+Dan Vaccaro
+01/29/2023
+Lab 01: ArrayLists
+COMP 15
+
+About: 
+This program reads a shopping list from a text file and creates two ArrayList instances: one list containing items to buy, 
+and another containing bought items. The user sees the "to buy" items, types in the name of an item, 
+and the item is moved from the "to buy" list to the "bought" list. When the user quits, the "bought" list is printed.
+
+Files included:
+ArrayList.h, ArrayList.cpp: header and implementation files for the ArrayList class.
+main.cpp: main program implementation file. 
+
+Compile this program by running the command "make shop" (without quotes).
+
+Run using "./shop <list_filename>" (without quotes).
+
+This program was built around starter code provided for the assignment.
+Some logic was inspired by discussion in the lab session.
+
+The program utilizes the ArrayList type as a data structure. An ArrayList contains a dynamically allocated array
+and a count for the number of items in the list, as well as the capacity of the list.
+The capacity dynamically adjusts to the number of items in the list to conserve memory.
+
+Known bugs: Not case sensitive.
+
+Time taken: 2 hours

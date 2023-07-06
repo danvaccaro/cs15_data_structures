@@ -1,0 +1,43 @@
+Results of various timed tests.
+
+Each row contains results for a particular algorithm.
+Each colum contains results for a test of the given size and type.
+Types of data are:  ran (random),    inc (increasing),
+                    dec (decreasing),rep (repeating)
+
+
+Input
+size/type =>  | 0/-  | 1/-      | 2/ran     | 10/ran   | 10000/ran | 100000/ran 
+--------------+-----+-----+-------+---------------------------------------------
+SelectionAux  |   0  | 0.000003 | 0.000002  | 0.000003 | 0.279783  | 25.153597          
+SelectionPlace|   0  | 0.000000 | 0.000001  | 0.000002 | 0.264594  | 23.211144       
+InsertionPlace|   0  | 0.000000 | 0.000000  | 0.000002 | 0.321512  | 33.742431
+Quicksort     |   0  | 0.000001 | 0.000001  | 0.000003 | 0.003976  | 0.039153
+--------------+-----+-----+-------+---------------------------------------------
+size/type =>  | 0/-  | 1/-      | 2/inc     | 10/inc   | 10000/inc | 100000/inc 
+--------------+-----+-----+-------+---------------------------------------------
+SelectionAux  |   0  |  |   |  |   |           
+SelectionPlace|   0  |  |   |  |   |   
+InsertionPlace|   0  |  |   |  |   |  
+Quicksort     |   0  |  |   |  |   |
+--------------+-----+-----+-------+---------------------------------------------
+size/type =>  | 0/-  | 1/-      | 2/dec     | 10/dec   | 10000/dec | 100000/dec 
+--------------+-----+-----+-------+---------------------------------------------
+SelectionAux  |   0  |  |   |  |   |           
+SelectionPlace|   0  |  |   |  |   |   
+InsertionPlace|   0  |  |   |  |   |  
+Quicksort     |   0  |  |   |  |   |
+--------------+-----+-----+-------+---------------------------------------------
+size/type =>  | 0/-  | 1/-      | 2/rep     | 10/rep   | 10000/rep | 100000/rep 
+--------------+-----+-----+-------+---------------------------------------------
+SelectionAux  |   0  |  |   |  |   |           
+SelectionPlace|   0  |  |   |  |   |   
+InsertionPlace|   0  |  |   |  |   |  
+Quicksort     |   0  |  |   |  |   |
+
+Notes: Selection and insertion sorts are about equal, which makes sense because
+       they are both O(n^2) algorithms. However, they are faster than the others
+       for the smaller lists.
+
+       Quicksort is much more effective for sorting larger lists, since it is
+       is O(nlogn) algorithm.

@@ -1,0 +1,18 @@
+Lab 4: Recursion
+Daniel Vaccaro
+CS15 
+2/15/2023
+
+This program generates a maze of a size input by user and recursively solves 
+the maze while counting the number of steps to solve it. It prints the initial
+puzzle, the solved puzzle, and the path length to get from start to finish.
+Successful paths are marked with '.', walls are marked with 'X', and backtracked
+paths are marked with 'b'.
+
+This program utilizes a 2D array representation of a maze, traversed by recursing
+from the start position. If a position is open, it is marked with  a 'b'. If that 
+position is part of the solution, it is then marked with a '.'. Recursion is
+performed in a North-East-South-West pattern until the final position is reached.
+
+Acknowledgements to authors of the starter code for providing the maze class
+and main program.

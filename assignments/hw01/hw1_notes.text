@@ -1,0 +1,28 @@
+                          Some notes on HW 1
+                          ==================
+
+1)  Array lists can't have "holes"
+    I. e.,  all the elements in the array list have indices in range 
+    [0 .. current_size)
+    This range is empty for an empty list.
+    Note notation:  [ and ] mean "closed," ( and ) mean "open."
+                    "closed" means the bound is included
+                    "open"   means the bound is excluded
+    [0 .. size) means 0 is included, size is not
+    [x .. x)    means the range is empty 
+                x cannot be both included and excluded
+    [x .. x]    means the range has 1 element:  x
+
+2)  There is no such thing as an "empty character."  Every char takes
+    up exactly one byte of memory.
+    The NUL character '\0' is not empty.  It's a valid character and
+    clients might store it in the list.  (N. B. NUL is not the
+    same as NULL.)
+
+    ** A sentinel must have the property that it can be distinguished **
+    ** from valid data.  '\0' is valid data and cannot be a sentinel. **
+
+3)  If a function would access an element whose index is out of range,
+    it must throw an exception.  The only exception (pun) to the rule
+    is that insertAt may be called with an index equal to the current
+    size, in which case, it's the same as insertAtBack.

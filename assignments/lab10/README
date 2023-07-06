@@ -1,0 +1,10 @@
+Lab 10: Hash Tables
+Written by: Dan Vaccaro
+Submitted: 16 April 2023
+
+Funkey is an implementation of a hash table which tests hashing
+using two different hash functions. FunkeyTable consists of two hash tables:
+one generated using linear probing to handle collisions, and another using 
+chaining. It can be seen that using the "good" hash function from the STL
+performs a better distribution than the "bad one", with far fewer collisions
+observed.

@@ -1,0 +1,8 @@
+artist1
+notCollab1
+collab1-2
+*
+artist2
+notCollab2
+collab1-2
+*

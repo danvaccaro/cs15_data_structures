@@ -1,0 +1,38 @@
+Finite maps
+-----------
+
+Transitioning from linear data structures (lists) to more general
+containers.
+
+Finite maps:  Think in terms of storage and access of (key, value) pairs.
+
+    * Keys and values can be most any type of value
+    * Keys need to be comparable if we are to find things
+      - Will definitely need to ask whether key1 == key2
+      - May need to ask whether key1 < key2
+
+Since we want to store data and be able to find it again:
+    Search is central operation.
+
+    * Insert item
+    * Remove item
+    * Is key in container?
+    * Get value for given key
+
+Data may be large, but we store it under a "key"
+Key can be part of the value data or something else.
+
+Examples:
+     Find person's contact information by name
+         "Pat" maps to
+         "Name: Pat; Home phone:  617-555-1212; Home address: 161 College Ave"
+
+     Find person's address by name
+
+     Find customer order by routing ID (FedEx)
+
+     Class list by course number
+
+Note that the values can be complex:  a list of students, a struct or
+class instance containing various fields.
+
